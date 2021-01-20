@@ -87,6 +87,7 @@ Cards.prototype.show_text = function(){
 
 
 function preload() {
+    config = loadJSON('config.json');
     fonts[0] = loadFont('./assets/YuseiMagic-Regular.ttf'); 
     fonts[1] = loadFont('./assets/AttractionPersonalUse-Rx16.ttf');  
     frases = loadStrings('./assets/frases.txt');
@@ -103,6 +104,7 @@ function setup() {
     btnLike.position(600, 630);
     btnLike.mousePressed(add_item);
     btnLike.size(100);
+
 
     textAlign(10, 10);
     textLeading(cards.text_height); // altura da quebra de linha
@@ -223,34 +225,36 @@ function btnDel_click(N){
 
 }
 
-function sendEmail(body,cli){
+function sendEmail(){
 
-    dados = 'body='+body+'&cli='+cli;
+  let nome = document.getElementById("edtNome").value;
 
-    fetch("sendEmail.php",{
-      method : "POST",
-      body : dados
+  let body = "";
+
+  for(let i=0; i<selecionadas.length;i++){
+    body += frases[selecionadas[i]] + "\n" ;
+  }
+
+
+  const data = new URLSearchParams();
+  data.append('body', body);
+  data.append('cli',nome);
+  data.append('email',config.email);
+
+    const myRequest = new Request('sendEmail.php',
+        {
+            method: 'POST',
+            body: data
+        })
+
+
+    fetch(myRequest)
+      .then(function(response){
+       console.log(response) 
     })
-    .then(function(response){
-      if(response.ok){
-        alert("Email Enviado com sucesso");
-              console.log(response);
-        return response.json();
-      }else{
-        alert("Erro...");
-      }
-      console.log(response);
-    })
-    .then(function(response){
-
-      console.log(response);
-
-
-    })
-
 
 }
 
 function btnSend(){
-  sendEmail("teste","Tales");
+  sendEmail();
 }

@@ -1,0 +1,16 @@
+  body{
+      background-color: rgb(238,234,207);
+  }
+
+.main {
+    width: 90%;
+    margin: auto;
+
+    justify-content: center;
+    align-items: center;
+  }
+
+  .l_row{
+  	background: rgb(255,255,0);
+
+  }

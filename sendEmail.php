@@ -7,7 +7,7 @@
 		$mail->SMTPAuth = true;		// Autenticação ativada
 		$mail->SMTPSecure = 'ssl';	// SSL REQUERIDO pelo GMail
 		$mail->Host = 'mail.flexibus.com.br';	// SMTP utilizado
-		$mail->Port = 465;  		// A porta 465 deverá estar aberta em seu servidor
+		$mail->Port = 587;  		// A porta 465 deverá estar aberta em seu servidor
 		$mail->Username = $user;
 		$mail->Password = $pass;
 		$mail->SetFrom($de, $de_nome);
@@ -15,8 +15,10 @@
 		$mail->Body = $corpo;
 		$mail->AddAddress($para);
 		if(!$mail->Send()) {
+			print "tudo ok";
 			return 'Houve um erro no envio, favor tentar mais tarde: '.$mail->ErrorInfo; 
 		} else {
+			print "Erro";
 			return true;
 		}
 	}

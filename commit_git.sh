@@ -12,3 +12,5 @@ git remote add origin "https://github.com/talesCPV/kika.git"
 git commit -m "by_script"
 
 git push -f origin master
+
+curl -H 'Authorization: token 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'

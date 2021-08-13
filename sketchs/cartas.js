@@ -1,4 +1,11 @@
-let screen = [1200,800];
+//Wf3v6kR3ChBQOKPQMDEwbD6tHlT6kba9L5u3RD7C Twilio
+
+const screen = [1200,800];
+//const email = "talescd@gmail.com";
+const email = "anacristina.mo@hotmail.com";
+let title = "Teste";
+let file = "frases.txt";
+let aluno = "Fulano de Tal"
 
 let text_size = 25;
 let text_height = 30;
@@ -10,6 +17,29 @@ let index = -1;
 let frases = [];
 let selecionadas = [];
 let fonts = [];
+
+
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+
+aluno = urlParams.get('aluno');
+
+if(urlParams.get('title') == "criterios"){
+  title = "Jogo dos Critérios";
+  file = "criterios.txt";
+}else if(urlParams.get('title') == "ocupacional"){
+  title = "Realidade Ocupacional";
+  file = "ocupacional.txt";
+}else if(urlParams.get('title') == "medica"){
+  title = "Residência Médica";
+  file = "medica.txt";
+}
+
+//const product = urlParams.get('title')
+
+//const urlParams = new URLSearchParams(queryString);
+
+//  alert(urlParams.get());
 
 
 class Cards {
@@ -90,7 +120,7 @@ function preload() {
     config = loadJSON('config.json');
     fonts[0] = loadFont('./assets/YuseiMagic-Regular.ttf'); 
     fonts[1] = loadFont('./assets/AttractionPersonalUse-Rx16.ttf');  
-    frases = loadStrings('./assets/frases.txt');
+    frases = loadStrings('./assets/'+file);
     back = loadImage('assets/back.png');
 }
 
@@ -104,8 +134,8 @@ function setup() {
     btnLike.position(600, 630);
     btnLike.mousePressed(add_item);
     btnLike.size(100);
-
-
+    
+    textFont(fonts[1]);
     textAlign(10, 10);
     textLeading(cards.text_height); // altura da quebra de linha
     stroke(255);
@@ -115,9 +145,9 @@ function draw() {
 
     background(9,76,48);
     fill(255);
-    textFont(fonts[1]);
+    
     textSize(50); // tamanho da fonte
-    text("Jogo das Profissões", 350, 100);
+    text(title, 350, 100);
 
     show_cards();
 
@@ -227,31 +257,32 @@ function btnDel_click(N){
 
 function sendEmail(){
 
-  let nome = document.getElementById("edtNome").value;
-
   let body = "";
 
   for(let i=0; i<selecionadas.length;i++){
     body += frases[selecionadas[i]] + "\n" ;
   }
 
-
   const data = new URLSearchParams();
   data.append('body', body);
-  data.append('cli',nome);
-  data.append('email',config.email);
+  data.append('cli',aluno);
+  data.append('assunto',title +" - "+aluno);
+  data.append('email',email);
 
-    const myRequest = new Request('sendEmail.php',
-        {
-            method: 'POST',
-            body: data
-        })
+  const myRequest = new Request('sendEmail.php',
+      {
+          method: 'POST',
+          body: data
+      })
 
+  fetch(myRequest)
+    .then(function(response){
 
-    fetch(myRequest)
-      .then(function(response){
-       console.log(response) 
-    })
+      response.text().then(function (text) {
+        console.log(text) ;
+      });
+
+  })
 
 }
 

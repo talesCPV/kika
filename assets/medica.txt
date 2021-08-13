@@ -1,0 +1,51 @@
+*** Residência Médica ***
+Administração em Saúde
+Anestesiologia
+Dermatologia
+Fisiatria
+Genética médica
+Ginecologia e obstetrícia
+Infectologia
+Medicina de família e comunidade
+Medicina de tráfego
+Medicina do trabalho
+Medicina do exercício e do esporte
+Medicina hiperbárica
+Medicina legal e perícias médicas
+Medicina nuclear
+Neurocirurgia
+Neurologia
+Oftalmologia
+Ortopedia e traumatologia
+Otorrinolaringologia
+Patologia
+Pediatria
+Psiquiatria
+Radiologia e diagnóstico por imagem
+Radioterapia e radio-oncologia
+*** Especialidades Clínicas ***
+Clínica médica
+Cardiologia
+Endocrinologia
+Gastroenterologia
+Geriatria
+Hematologia e hemoterapia
+Imunologia e alergologia
+Medicina intensiva
+Nefrologia
+Nutrologia
+Oncologia
+Pneumologia
+Reumatologia
+*** Especialidades Cirúrgicas ***
+Cirurgia geral
+Cirurgia cardiovascular
+Cirurgia de cabeça e pescoço
+Cirurgia do aparelho digestivo
+Cirurgia pediátrica
+Cirurgia plástica
+Cirurgia torácica
+Cirurgia vascular
+Coloproctologia
+Mastologia
+Urologia

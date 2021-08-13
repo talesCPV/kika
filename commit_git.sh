@@ -1,9 +1,10 @@
 
 #!/bin/bash
 # Upload files to Github - https://github.com/talesCPV/kika.git
-git init
 
 curl -H 'Authorization: token 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' https://github.com/talesCPV/kika.git
+
+git init
 
 git add .
 
